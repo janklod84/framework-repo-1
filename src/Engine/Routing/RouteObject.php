@@ -5,6 +5,8 @@ use JanKlod\Common\Url;
 
 
 /**
+ * To Refactoring!!!
+ * 
  * @package JanKlod\Routing\RouteObject 
 */ 
 class RouteObject implements RouteObjectInterface
@@ -98,6 +100,7 @@ class RouteObject implements RouteObjectInterface
                {
                     $this->addNamedRoute($this->name, $this);
                }
+
          }
 
 
@@ -231,22 +234,6 @@ class RouteObject implements RouteObjectInterface
 
 
              /**
-              * Return match param
-              * @param string $match 
-              * @return string 
-            */
-             private function paramMatch($match)
-             {
-                   if(isset($this->params[$match[1]]))
-                   {
-                        return '('. $this->params[$match[1]] . ')';
-                   }
-                   return '([^/]+)';
-             }
-
-
-            
-             /**
               * callback
               * @return 
              */
@@ -274,7 +261,7 @@ class RouteObject implements RouteObjectInterface
                    return $this;
              } 
              
-
+             
 
              /**
               * Generate named route
@@ -292,12 +279,28 @@ class RouteObject implements RouteObjectInterface
                   return self::findNamedRoute($name)->getUrl($params);
              }
              
-              /**
-                * Get Url
-                * @param array $params 
-                * @return string
+
+            /**
+              * Return match param
+              * @param string $match 
+              * @return string 
+            */
+             private function paramMatch($match)
+             {
+                   if(isset($this->params[$match[1]]))
+                   {
+                        return '('. $this->params[$match[1]] . ')';
+                   }
+                   return '([^/]+)';
+             }
+
+             
+            /**
+              * Get Url
+              * @param array $params 
+              * @return string
              */
-             public function getUrl($params)
+             private function getUrl($params)
              {
                   $path = $this->getPath();
                   foreach($params as $k => $v)

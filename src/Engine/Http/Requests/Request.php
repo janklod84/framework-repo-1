@@ -41,6 +41,14 @@ class Request implements RequestInterface
 
          
          /**
+          * Get global server
+          * @param string $key 
+          * @return mixed
+         */
+         public function fromGlobals($key = null) {}
+
+
+         /**
           * Get Base Url
 		      * if $uri = false, it'll remove URI string /
           * @return type

@@ -107,6 +107,6 @@ class Dispatcher
            */
           public function getAction($name): string
           {
-          	   return $name ?? $this->action;
+          	   return $name ?? '@index';
           }
 }

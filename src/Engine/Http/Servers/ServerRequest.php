@@ -35,20 +35,20 @@ class ServerRequest implements ServerRequestInterface
         */
         public function protocol()
         {
-             return $this->server('SERVER_PROTOCOL');
+             return $this->fromGlobals('SERVER_PROTOCOL');
         }
 
 
         public function port()
         {
-             return $this->server('SERVER_PORT'); 
+             return $this->fromGlobals('SERVER_PORT'); 
         }
 
 
 
         public function documentRoot()
         {
-             return $this->server('DOCUMENT_ROOT'); 
+             return $this->fromGlobals('DOCUMENT_ROOT'); 
         }
       
 
@@ -58,7 +58,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function scheme()
         {
-              return $this->server('REQUEST_SCHEME');
+              return $this->fromGlobals('REQUEST_SCHEME');
         }
 
 
@@ -68,7 +68,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function cli($type = 'argv'): array
         {
-            return $this->server($type);
+            return $this->fromGlobals($type);
         }
 
 
@@ -78,7 +78,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function uri()
         {
-            return $this->server('REQUEST_URI');
+            return $this->fromGlobals('REQUEST_URI');
         }
 
 
@@ -88,7 +88,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function method()
         {
-            return $this->server('REQUEST_METHOD');
+            return $this->fromGlobals('REQUEST_METHOD');
         }
 
         
@@ -101,15 +101,15 @@ class ServerRequest implements ServerRequestInterface
         */
         public function ip()
         {
-        	 $ip = $this->server('REMOTE_ADDR'); // [1]
+        	 $ip = $this->fromGlobals('REMOTE_ADDR'); // [1]
 
-        	 if($this->server('HTTP_CLIENT_IP')) // [2]
+        	 if($this->fromGlobals('HTTP_CLIENT_IP')) // [2]
         	 {
-        	 	    $ip = $this->server('HTTP_CLIENT_IP');
+        	 	    $ip = $this->fromGlobals('HTTP_CLIENT_IP');
 
-        	 }elseif($this->server('HTTP_X_FORWARDED_FOR')){
+        	 }elseif($this->fromGlobals('HTTP_X_FORWARDED_FOR')){
 
-        	 	    $ip = $this->server('HTTP_X_FORWARDED_FOR');
+        	 	    $ip = $this->fromGlobals('HTTP_X_FORWARDED_FOR');
         	 }
 
         	 return $ip;
@@ -121,7 +121,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function host(): string
         {
-             return $this->server('HTTP_HOST');
+             return $this->fromGlobals('HTTP_HOST');
         }
         
 
@@ -130,7 +130,7 @@ class ServerRequest implements ServerRequestInterface
          * @param type $key 
          * @return array
         */
-        public function server($key = null)
+        public function fromGlobals($key = null)
         {
             if(is_null($key))
             {

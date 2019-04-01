@@ -14,6 +14,15 @@ function debug($arr, $die = false)
 }
 
 
+function dd($arr, $die = false)
+{
+    echo '<pre>';
+	var_dump($arr);
+	echo '</pre>';
+	if($die) die;
+}
+
+
 if(!function_exists('array_get'))
 {
        /**
@@ -68,6 +77,6 @@ if(!function_exists('view'))
 	 */
 	 function view($path, $data = [])
 	 {
-	 	  // return new ViewFactory($this->app); To Fix
+	 	  // return (new View($this->app))->render($path, $data);
 	 }
 }

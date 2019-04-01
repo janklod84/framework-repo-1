@@ -63,7 +63,6 @@ class Response implements ResponseInterface
          */
         public function setBody($content)
         {
-              debug($content);
               $this->content = $content;
         }
 

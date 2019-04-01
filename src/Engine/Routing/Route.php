@@ -2,10 +2,13 @@
 namespace JanKlod\Routing;
 
 
+use Closure;
+
+
 /**
- * @package Router
+ * @package JanKlod\Routing\Route
 */
-class Route implements RouteInterface
+class Route 
 {
     
          /**
@@ -13,7 +16,7 @@ class Route implements RouteInterface
           * @param string $path 
           * @param string|callable $callback 
           * @param string $name 
-          * @return 
+          * @return RouteObject
          */
          public static function get(string $path, $callback, string $name = null) 
          {
@@ -22,27 +25,38 @@ class Route implements RouteInterface
 
 
          /**
-         * Add Routes by method POST
-         * @param string $path 
-         * @param string|callable $callback 
-         * @param string $name 
-         * @return 
+           * Add Routes by method POST
+           * @param string $path 
+           * @param string|callable $callback 
+           * @param string $name 
+           * @return RouteObject
         */
          public static function post(string $path, $callback, string $name = null)
          {
               return self::add($path, $callback, $name, $method = 'POST');
          }
 
+         
+         /**
+          * Description
+          * @param array $options ['prefix', 'controller', ...]
+          * @param \Closure $callback 
+          * @return RouteObject
+         */
+         public static function group(array $options, Closure $callback) {}
+
 
 
          /**
-          * Add Routes by format CRUD [ CREATE READ UPDATE DELETE]
+          * Add Routes by format CRUD [ CREATE READ UPDATE DELETE] 
+          * 
           * @param string $path 
           * @param string|callable $callback 
           * @param string $name 
-          * @return ''
+          * @return RouteObject
          */
-         public static function crud($prefix, \Closure $callback){}
+         public static function package($path, $controller) {}
+        
 
 
          /**
@@ -56,15 +70,7 @@ class Route implements RouteInterface
          }
 
 
-         /**
-          * Description
-          * @param array $options 
-          * @param \Closure $callback 
-          * @return ''
-         */
-         public static function group() {}
-
-         
+        
          /**
           * Add routes
           * @param ...$args / func_get_args()

@@ -44,13 +44,17 @@ class LoginController extends Controller
         */
         public function index()
         {    
-             if($this->isPost())
+             //if($this->isPost())
+             //{
+                   // debug($this->request->post());
+             //}
+
+             if($this->isAjax())
              {
-                  // echo 'Yes';
-                   debug($this->request->post('test'));
+                 // die('AJAX');
+                echo $this->json($this->request->post());
              }
-             
-             //response()->withStatus(505); 
+
     	     $this->form();
         }
 

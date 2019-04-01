@@ -117,7 +117,7 @@ class Router implements RouterInterface
          */
          private function matchedRoute()
          {
-              return $this->routes[$this->currentMethod()];
+              return $this->routes[$this->currentMethod()] ?? [];
          }
          
 

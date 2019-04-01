@@ -53,7 +53,7 @@ Route::group($options,  function () {
 });
 */
 
-
+/*
 // 
 Route::get('/test/:slug-:id', function ($slug, $id) {
  
@@ -73,6 +73,7 @@ Route::get('/test/admin/:id-:slug', function ($id, $slug) {
 
 }, 'test.admin')->with('id', '[0-9]+')->with('slug', '([a-z\-0-9]+)');;
 
+*/
 
 /*
  |------------------------------------------------------------------

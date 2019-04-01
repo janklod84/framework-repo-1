@@ -21,7 +21,7 @@ class Config implements ConfigInterface
            * Collection object
            * @var \JanKlod\Collections\Collection
           */
-          private $collection;
+          private static $collection;
 
 
          /**
@@ -32,9 +32,9 @@ class Config implements ConfigInterface
          public function __construct(array $data)
          {    
               self::$stored = $data;
-              $this->collection = new Collection(self::$stored);
+              self::$collection = new Collection(self::$stored);
 
-              // debug($this->collection);
+              // debug(self::$collection);
          }
          
          /**
@@ -43,9 +43,9 @@ class Config implements ConfigInterface
           * @param mixed $value 
           * @return void
          */
-         public function set($key, $value)
+         public static function set($key, $value)
          {
-              $this->collection->set($key, $value);
+              self::$collection->set($key, $value);
          }
 
          
@@ -55,9 +55,9 @@ class Config implements ConfigInterface
           * @param mixed $key 
           * @return mixed
          */
-         public function get($key)
+         public static function get($key)
          {
-             return $this->collection->get($key);
+             return self::$collection->get($key);
          }
 
          /**
@@ -65,9 +65,9 @@ class Config implements ConfigInterface
           * @param mixed $key 
           * @return bool
         */
-         public function has($key): bool
+         public static function has($key): bool
          {
-             return ! $this->collection->isEmpty($key);
+             return ! self::$collection->isEmpty($key);
          }
 
          /**
@@ -75,9 +75,9 @@ class Config implements ConfigInterface
            * @param mixed $data
            * @return void
          */
-         public function push($data)
+         public static function push($data)
          {
-             $this->collection->push($data);
+             self::$collection->push($data);
          }
 
 
@@ -85,9 +85,9 @@ class Config implements ConfigInterface
           * Get All config stored in $stored
           * @return array
          */
-         public function all()
+         public static function all()
          {
-              return $this->collection->all();
+              return self::$collection->all();
          }
 
 
@@ -97,9 +97,9 @@ class Config implements ConfigInterface
           * @param string $item 
           * @return string
         */
-         public function group($group = 'default')
+         public static function group($group = 'default')
          {
-              return $this->all()[$group] ?? [];
+              return self::all()[$group] ?? [];
          }
 
          
@@ -109,8 +109,8 @@ class Config implements ConfigInterface
           * @param mixed $item 
           * @return mixed
          */
-         public function retriveItem($group = 'default', $item = null)
+         public static function retriveItem($group = 'default', $item = null)
          {
-              return $this->group($group)[$item] ?? null;
+              return self::group($group)[$item] ?? null;
          }
 }

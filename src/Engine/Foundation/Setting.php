@@ -40,7 +40,10 @@ class Setting
                 \JanKlod\Http\Facades\RequestProvider::class,
                 \JanKlod\Http\Facades\ResponseProvider::class,
                 \JanKlod\Routing\Facades\RouterProvider::class,
-                \JanKlod\Template\Facades\ViewProvider::class
+                \JanKlod\Template\Facades\ViewProvider::class,
+                \JanKlod\Database\Facades\DbConfigProvider::class,
+                \JanKlod\Database\Facades\DbConnectionProvider::class,
+                \JanKlod\Database\Facades\DbManagerProvider::class,
             ],
             'alias' => [
                'Route' => 'JanKlod\\Routing\\Route'

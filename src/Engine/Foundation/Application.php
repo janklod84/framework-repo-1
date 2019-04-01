@@ -48,6 +48,29 @@ final class Application
           }
 
 
+
+          public function testing()
+          {
+               // $this->get('db.config');
+               // dd($this->get('db'));
+
+               $pdo = $this->get('db');
+
+
+               // $pdo->query('INSERT INTO users (login, password) VALUES (:login, :password)', 
+               // [
+               //    'login' => 'Jean',
+               //    'password' => '1234'
+               // ]);
+
+               $data = $pdo->query('SELECT * FROM users')->fetchAll();
+
+
+               debug($data);
+
+          }
+
+
           /**
            * Break Point of Application
            * $obj = $this->app->make('JanKlod\\Test');
@@ -62,10 +85,10 @@ final class Application
           */
           public function run()
           {
+              $this->testing();
+
               $output = (string) $this->get('router')->dispatch();
-              // debug($output);
               $response = $this->get('response');
-              // $response->setStatus(404); Test
               $response->setBody($output);
               $response->send();
           } 

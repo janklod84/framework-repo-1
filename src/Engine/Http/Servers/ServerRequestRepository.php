@@ -64,14 +64,17 @@ class ServerRequestRepository
         */
         public function isAjax(): bool
         {
-            return $this->prepareAjax() == 'xmlhttprequest';
+             return $this->hasAjax() && $this->hasAjaxEquality();
         }
 
-
-        private function prepareAjax()
-        {
-        	return strtolower($this->server->fromGlobals('HTTP_X_REQUEST_WITH'));
-        }
  
-      
+        private function hasAjax()
+        {
+            return $this->server->fromGlobals('HTTP_X_REQUESTED_WITH') ?? false;
+        }
+
+        private function hasAjaxEquality()
+        {
+            return $this->server->fromGlobals('HTTP_X_REQUESTED_WITH') === 'XMLHttpRequest';
+        }
 }

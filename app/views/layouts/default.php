@@ -23,6 +23,7 @@
    </div>
 
    <!-- scripts -->
-   <script src="/admin/app.css"></script>
+   <script src="/admin/jquery/jquery-3.3.1.min.js"></script>
+   <script src="/admin/app.js"></script>
 </body>
 </html>

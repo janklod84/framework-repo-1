@@ -10,7 +10,7 @@ interface ServerRequestInterface
 	   /**
          * Get server datas
          * @param string|null $key 
-         * @return void
+         * @return mixed
         */
-	    public function server($key = null);
+	    public function fromGlobals($key = null);
 }
