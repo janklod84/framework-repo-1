@@ -1,0 +1,19 @@
+[25-Mar-2019 02:27:49 UTC] Uncaught exception: 'ErrorException' with message 'Undefined variable: callback'
+Stack trace: #0 D:\laragon\www\Project\src\janklod\Routing\Route.php(82): JanKlod\Exception\ErrorHandler::errorHandler(8, 'Undefined varia...', 'D:\\laragon\\www\\...', 82, Array)
+#1 D:\laragon\www\Project\src\janklod\Routing\Route.php(20): JanKlod\Routing\Route::add('/', Object(Closure), '', 'GET')
+#2 D:\laragon\www\Project\routes\app.php(14): JanKlod\Routing\Route::get('/', Object(Closure))
+#3 D:\laragon\www\Project\src\janklod\FileSystem\File.php(100): require_once('D:\\laragon\\www\\...')
+#4 D:\laragon\www\Project\src\janklod\FileSystem\File.php(76): JanKlod\FileSystem\File->check('D:\\laragon\\www\\...')
+#5 D:\laragon\www\Project\src\janklod\Routing\Router.php(42): JanKlod\FileSystem\File->call('routes/app.php')
+#6 D:\laragon\www\Project\src\janklod\Routing\Facades\RouterProvider.php(18): JanKlod\Routing\Router->__construct(Object(JanKlod\Container\DI\DIC))
+#7 D:\laragon\www\Project\src\janklod\Container\DI\DIC.php(160): JanKlod\Routing\Facades\RouterProvider->JanKlod\Routing\Facades\{closure}(Object(JanKlod\Container\DI\DIC))
+#8 D:\laragon\www\Project\src\janklod\Container\DI\DIC.php(90): JanKlod\Container\DI\DIC->call(Object(Closure))
+#9 D:\laragon\www\Project\src\janklod\Foundation\Application.php(95): JanKlod\Container\DI\DIC->get('router')
+#10 D:\laragon\www\Project\src\janklod\Foundation\Application.php(134): JanKlod\Foundation\Application->get('router')
+#11 D:\laragon\www\Project\public\index.php(35): JanKlod\Foundation\Application->run()
+#12 {main}
+Thrown in 'D:\laragon\www\Project\src\janklod\Routing\Route.php' on line 82
+[25-Mar-2019 02:28:12 UTC] Uncaught exception: 'ErrorException' with message 'Use of undefined constant sss - assumed 'sss' (this will throw an Error in a future version of PHP)'
+Stack trace: #0 D:\laragon\www\Project\public\index.php(28): JanKlod\Exception\ErrorHandler::errorHandler(2, 'Use of undefine...', 'D:\\laragon\\www\\...', 28, Array)
+#1 {main}
+Thrown in 'D:\laragon\www\Project\public\index.php' on line 28

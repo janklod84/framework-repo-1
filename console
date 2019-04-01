@@ -1,0 +1,7 @@
+#!/usr/bin/php env
+<?php 
+define('JanKlod', microtime(true));
+
+require_once realpath(__DIR__.'/vendor/autoload.php');
+
+// Part for execution command with console interface ....

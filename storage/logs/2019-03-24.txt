@@ -1,0 +1,5 @@
+[24-Mar-2019 20:30:17 UTC] Uncaught exception: 'ErrorException' with message 'Use of undefined constant TestMyError - assumed 'TestMyError' (this will throw an Error in a future version of PHP)'
+Stack trace: #0 D:\laragon\www\Project\bootstrap\app.php(28): JanKlod\Exception\ErrorHandler::errorHandler(2, 'Use of undefine...', 'D:\\laragon\\www\\...', 28, Array)
+#1 D:\laragon\www\Project\public\index.php(26): require_once('D:\\laragon\\www\\...')
+#2 {main}
+Thrown in 'D:\laragon\www\Project\bootstrap\app.php' on line 28
