@@ -49,13 +49,14 @@ final class Application
 
 
 
-          public function testing()
+          public function testDB()
           {
+
+
                // $this->get('db.config');
                // dd($this->get('db'));
 
                $pdo = $this->get('db');
-
 
                // $pdo->query('INSERT INTO users (login, password) VALUES (:login, :password)', 
                // [
@@ -63,12 +64,24 @@ final class Application
                //    'password' => '1234'
                // ]);
 
-               $data = $pdo->query('SELECT * FROM users')->fetchAll();
+               // $data = $pdo->query('SELECT * FROM users')->fetchAll();
+               // debug($data);
 
-
-               debug($data);
+               $this->testQueryBuilder();
 
           }
+
+
+          private function testQueryBuilder()
+          {
+                $qb = new \JanKlod\Database\QueryBuilder();
+
+                debug($this->app);
+
+          }
+
+
+
 
 
           /**
@@ -78,6 +91,7 @@ final class Application
            * debug(\JanKlod\Routing\RouteCollection::find('POST'));
            * $output = (string) $this->get('router')->dispatch();
            * $response = $this->get('response');
+           * $response->setStatus(500) 404, 200, ... Testing
            * $response->setBody($output);
            * $response->send();
            * 
@@ -85,7 +99,7 @@ final class Application
           */
           public function run()
           {
-              $this->testing();
+              $this->testDB();
 
               $output = (string) $this->get('router')->dispatch();
               $response = $this->get('response');

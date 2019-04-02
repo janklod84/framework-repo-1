@@ -34,12 +34,21 @@ class DatabaseManager
          * @param string $sql 
          * @return mixed
         */
-		public function query(string $sql, $params = [])
+		public function query(string $sql, $params = [], $fetchMode = PDO::FETCH_OBJ)
         {
         	 if(!empty($params))
         	 {
-        	 	 $stmt = $this->connection->prepare($sql);
-        	 	 $stmt->execute($params);
+	        	 	 $stmt = $this->connection->prepare($sql);
+	        	 	 $stmt->execute($params);
+
+	        	 	 $result = $stmt->fetchAll();
+
+	        	 	 if($result === false)
+	        	 	 {
+	        	 	 	  return [];
+	        	 	 }
+
+	        	 	 return $result;
 
         	 }else{
 
@@ -48,27 +57,21 @@ class DatabaseManager
              
         }
 
-
-        public function fetchAll($sql)
-        {
-        	 return $this->query($sql)->fetchAll();
-        }
         
         /**
-         * Prepare statement 
-         * @param string $sql 
-         * @return 
+         * Determine the last insert id in records
+         * @return int
         */
-        public function prepare(string $sql)
-        {
-             return $this->connection->prepare($sql);
-        }
+        public function lastInsertId()
+	    {
+	        return $this->connection->lastInsertId();
+	    }
 
 		
 		/**
          * Begin transaction
          * @param string $sql 
-         * @return ''
+         * @return type
         */
 		public function beginTransaction()
 		{
@@ -78,7 +81,7 @@ class DatabaseManager
 
 		/**
 		 * Roolback
-		 * @return ''
+		 * @return type
 		*/
 		public function rollBack()
 		{
@@ -87,24 +90,12 @@ class DatabaseManager
 		
 		/**
 		 * Commit
-		 * @return ''
+		 * @return type
 		*/
 		public function commit()
 		{
 			 return $this->connection->commit();
 		}
 		
-		
-		/**
-		 * 
-		 * @param QueryStatement $stmt 
-		 * @param array $params 
-		 * @return ''
-		*/
-		public function execute(QueryStatement $stmt, $params = [])
-		{
-			return $stmt->execute($params);
-		}
-
        
 }
