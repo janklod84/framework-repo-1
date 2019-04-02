@@ -4,7 +4,7 @@ namespace JanKlod\Routing;
 
 
 /**
- * @package JanKlod\Routing\Modules\Dispatcher;
+ * @package JanKlod\Routing\Dispatcher;
 */
 class Dispatcher 
 {
@@ -32,7 +32,7 @@ class Dispatcher
           /**
            * @var current action
           */
-	       private $action = 'index';
+	       private $action;
 
            
          /**
@@ -96,7 +96,7 @@ class Dispatcher
                     
 	      	   }
                
-            return new $controller($this->app);
+               return new $controller($this->app);
 	      }
  
           

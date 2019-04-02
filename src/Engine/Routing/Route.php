@@ -48,14 +48,25 @@ class Route
 
 
          /**
-          * Add Routes by format CRUD [ CREATE READ UPDATE DELETE] 
+          * Add Routes by format CRUD MORE Advance [ CREATE READ UPDATE DELETE] 
           * 
           * @param string $path 
           * @param string|callable $callback 
-          * @param string $name 
-          * @return RouteObject
+          * @return mixed
          */
-         public static function package($path, $controller) {}
+         public static function package($path, $callback) {}
+		 
+		 
+		 
+		 /**
+          * Add Routes by format CRUD [ CREATE READ UPDATE DELETE]
+          * @param string $path 
+          * @param string|callable $callback 
+          * @param string $name 
+          * @return mixed
+         */
+         public static function crud($prefix, \Closure $callback){}
+
         
 
 

@@ -9,5 +9,8 @@ return [
 	},
 	'collection' => function () {
 		return new Collection();
+	}, 
+	'base_url' => function () {
+		return $this->app->configs['app']['base_url'] ?? '';
 	}
 ];

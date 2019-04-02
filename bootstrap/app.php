@@ -1,8 +1,5 @@
 <?php 
 
-// This path 'll be removed !
-require_once ROOT .'/debug.php';
-
 /*
 |----------------------------------------------------------------------
 |   Autoloading classes and dependencies of application

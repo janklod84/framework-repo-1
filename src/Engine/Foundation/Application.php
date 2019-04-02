@@ -48,58 +48,20 @@ final class Application
           }
 
 
-
-          public function testDB()
+          
+          public function test()
           {
-
-
-               // $this->get('db.config');
-               // dd($this->get('db'));
-
-               $pdo = $this->get('db');
-
-               // $pdo->query('INSERT INTO users (login, password) VALUES (:login, :password)', 
-               // [
-               //    'login' => 'Jean',
-               //    'password' => '1234'
-               // ]);
-
-               // $data = $pdo->query('SELECT * FROM users')->fetchAll();
-               // debug($data);
-
-               $this->testQueryBuilder();
-
+              
           }
-
-
-          private function testQueryBuilder()
-          {
-                $qb = new \JanKlod\Database\QueryBuilder();
-
-                debug($this->app);
-
-          }
-
-
-
 
 
           /**
            * Break Point of Application
-           * $obj = $this->app->make('JanKlod\\Test');
-           * $obj->show();
-           * debug(\JanKlod\Routing\RouteCollection::find('POST'));
-           * $output = (string) $this->get('router')->dispatch();
-           * $response = $this->get('response');
-           * $response->setStatus(500) 404, 200, ... Testing
-           * $response->setBody($output);
-           * $response->send();
-           * 
            * @return mixed
           */
           public function run()
           {
-              $this->testDB();
+              $this->test();
 
               $output = (string) $this->get('router')->dispatch();
               $response = $this->get('response');

@@ -62,14 +62,14 @@ class Router implements RouterInterface
               }
                
               $this->notFound();
-              // $this->errorCode();
+              // $this->errorCode(); test
          }
 
 
          /**
           * Get not found page with status
           * $this->response->redirect(RouteObject::getNotFound());
-          * @return type
+          * @return void
          */
          private function notFound()
          {

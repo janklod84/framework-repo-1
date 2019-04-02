@@ -24,17 +24,18 @@ class ServiceProviderRunner extends ServiceRunner
           
 	   	    foreach($services as $service)
             {      
-                 if(class_exists($service))
+                 if(!class_exists($service))
                  {
-                        $provider = new $service($this->app);
-                        $provider->register();
-                        $callable = [$provider, 'register'];
-                        if(is_callable($callable))
-                        {
-                             call_user_func_array($callable, []);
-                        }
-
+                      exit(sprintf('Class <strong>%s</strong> does not exist!', $service));
                  }
+
+                  $provider = new $service($this->app);
+                  $provider->register();
+                  $callable = [$provider, 'register'];
+                  if(is_callable($callable))
+                  {
+                       call_user_func_array($callable, []);
+                  }
             }
 
 	     }

@@ -2,14 +2,14 @@
 
 return [
    
-
    /*
     |------------------------------------------------------------------
     |   Container global styles css you want to use
     |------------------------------------------------------------------
    */
     'css' => [
-       '/assets/css/app.css'
+       '/task/bootstrap/css/bootstrap.min.css',
+       '/task/app.css'
     ],
 
    /*
@@ -18,12 +18,13 @@ return [
     |------------------------------------------------------------------
    */
     'js' => [
-       '/assets/css/app.js'
+       '/task/jquery/jquery-3.3.1.min.js',
+       '/task/app.js'
     ],
 
     /*
     |------------------------------------------------------------------
-    |  Container dependencies you want to use for front
+    |  Container dependencies you want to use for front end development
     |------------------------------------------------------------------
    */
     'depends' => [

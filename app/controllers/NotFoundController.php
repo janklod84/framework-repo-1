@@ -13,10 +13,7 @@ class NotFoundController extends Controller
 
 	    public function index()
 	    {
-	    	 $st = $this->app->response->setStatus(404);
-	    	 echo $st;
-	    	 
-	    	 // die('Not Found Page');
-	    	 $this->render('not-found');
+	    	 $title = 'Страница не найдена!';
+	    	 $this->render('not-found', compact('title'));
 	    }
 }

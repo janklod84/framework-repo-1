@@ -10,6 +10,8 @@ use JanKlod\Collections\Collection;
 class Config implements ConfigInterface
 {
         
+        
+         const DEFAULT_CONFIG_PATH = 'app/config/%s.php';
 
          /**
           * @var array
@@ -102,7 +104,14 @@ class Config implements ConfigInterface
               return self::all()[$group] ?? [];
          }
 
-         
+         /**
+          * Load config from file
+          * @param type|string $group 
+          * @return type
+         */
+         public static function file($group = 'app') {}
+
+
          /**
           * Retrieve config item
           * @param string $group 

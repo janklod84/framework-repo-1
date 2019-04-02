@@ -8,5 +8,42 @@ namespace JanKlod\Encryption;
 class Hash 
 {
 
-	
+	 
+		 public function __construct($app)
+		 {
+
+		 }
+
+		 
+		 /**
+	       * Make hash
+	       * @var $string, $salt
+	       * @return string
+	     **/
+	      public static function make($algo = 'sha256', $string, $salt ='')
+		  {
+	           return hash($algo, $string . $salt);
+		  }
+
+	     
+	     /**
+	      * Random Salt
+	      * @var $length
+	      * @return string
+	     **/
+	  	 public static function salt($length)
+	  	 {   
+	           return random_bytes($length);
+	  	 }
+	     
+
+	     /**
+	      * Check Unique ID
+	      * @return mixed
+	     **/
+	  	 public static function unique()
+	  	 {
+	           return self::make(uniqid());
+	  	 }
+     
 }

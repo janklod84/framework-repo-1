@@ -25,6 +25,10 @@ class Bootstrap
                  
                  $this->app = $app;
                  
+                 # Functions requiring
+                 require_once __DIR__.'/Function.php';
+                 
+
                  # Add params in container
                  $bindings = require_once(__DIR__.'/Binding.php');
                  $this->app->merge($bindings);

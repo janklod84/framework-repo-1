@@ -1,5 +1,5 @@
 <?php 
-namespace JanKlod\Template\Components;
+namespace JanKlod\Template;
 
 
 /**

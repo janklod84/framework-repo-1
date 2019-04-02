@@ -192,14 +192,14 @@ class DIC implements ContainerInterface
         {
             if(DEV)
             {
-                echo '<h2>Container</h2>';
-                debug($this->container);
+                // echo '<h2>Container</h2>';
+                // debug($this->container);
 
-                echo '<h2>Singletons</h2>';
-                debug($this->singletons);
+                // echo '<h2>Singletons</h2>';
+                // debug($this->singletons);
 
-                echo '<h2>Instances</h2>';
-                debug($this->instances);
+                // echo '<h2>Instances</h2>';
+                // debug($this->instances);
             }
         }
 

@@ -228,8 +228,16 @@ class Response implements ResponseInterface
         private function httpProtocol($status)
         {
              $head =  sprintf('%s %s', (new ServerRequest())->protocol(), $status);
-             header($head);
+             header($head, false);
              $this->setCode($status);
         }
+
+        /*
+        private function httpProtocolRelease()
+        {
+            $http_line = sprintf('HTTP/%s %s %s', $this->protocolVersion(), $this->getStatusCode(), $this->getContent());
+            return $http_line;
+        }
+        */
 }
 

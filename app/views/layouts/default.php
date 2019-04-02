@@ -6,15 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-
-    <title>Default Layout</title>
-
-    <!-- bootstrap core css -->
-    <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- styles -->
-    <link rel="stylesheet" href="/admin/app.css">
-
+    <title><?= $title ?? 'Заголовок' ?></title>
+    <?php Asset::renderCss() ?>
 </head>
 <body>
 
@@ -23,7 +16,6 @@
    </div>
 
    <!-- scripts -->
-   <script src="/admin/jquery/jquery-3.3.1.min.js"></script>
-   <script src="/admin/app.js"></script>
+   <?php Asset::renderJs() ?>
 </body>
 </html>

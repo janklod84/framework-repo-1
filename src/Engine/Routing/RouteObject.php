@@ -5,7 +5,7 @@ use JanKlod\Common\Url;
 
 
 /**
- * To Refactoring!!!
+ * Class 'll be To Refactoring!
  * 
  * @package JanKlod\Routing\RouteObject 
 */ 

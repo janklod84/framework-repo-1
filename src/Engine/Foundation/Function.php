@@ -1,8 +1,9 @@
 <?php 
 
 use JanKlod\Http\Requests\Response;
+use JanKlod\Http\Requests\Request;
 use JanKlod\Routing\Router;
-use JanKlod\Template\ViewFactory;
+use JanKlod\Template\View;
 
 
 function debug($arr, $die = false)
@@ -52,6 +53,23 @@ if(!function_exists('response'))
 }
 
 
+if(!function_exists('baseUrl'))
+{
+      
+      /**
+       * Return current base URL if user active it
+       * @param string|null $current 
+       * @return mixed
+      */
+      function baseUrl(string $current = '')
+      {
+      	  if($current) { return $current; }
+      	  elseif($current === false) { return false; }
+      	  else{ return (new Request())->baseUrl(false); }
+      }
+}
+
+
 if(!function_exists('url'))
 {
 	 /**
@@ -60,9 +78,9 @@ if(!function_exists('url'))
 	  * @param type|array $params 
 	  * @return type
 	 */
-	 function url($name, $params = [])
+	 function url($name = '', $params = [])
 	 {
-	 	 Router::url($name, $params);
+	 	  Route::url($name, $params);
 	 }
 }
 

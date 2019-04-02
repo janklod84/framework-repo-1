@@ -1,5 +1,5 @@
 <?php 
-namespace app\controllers\admin;
+namespace app\controllers;
 
 use JanKlod\Http\Controller;
 

@@ -3,15 +3,7 @@
 		 <form method="POST" autocomplete="off" id="form">
 		   <div class="form-group">
 		     <label for="login">Логин</label>
-		     <?= $form->input(
-		     	[
-		     	   'class' => 'form-control',
-		     	   'placeholder' => "Введите ваш логин",
-		     	   'id' => 'login'
-		     	], 
-		     	'email'); 
-		     ?>
-		    <!-- <input type="email" class="form-control" id="login" placeholder="Введите ваш логин"> -->
+		    <input type="email" class="form-control" id="login" placeholder="Введите ваш логин">
 		  </div>
 		  <div class="form-group">
 		    <label for="password">Пароль</label>
