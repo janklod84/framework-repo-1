@@ -8,13 +8,8 @@ use JanKlod\Validation\Validator;
 /**
  * @package JanKlod\Template\Facades\ValiadationProvider
 */ 
-class ValiadationProvider  extends ServiceProvider
+class ValidationProvider  extends ServiceProvider
 {
         
-       public function register()
-       {
-       	   $this->app->set('validation', function () {
-               return new Validator($this->app);
-           });
-       }
+       public function register() {}
 }

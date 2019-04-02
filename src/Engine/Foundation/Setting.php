@@ -44,6 +44,7 @@ class Setting
                 \JanKlod\Database\Facades\DbConfigProvider::class,
                 \JanKlod\Database\Facades\DbConnectionProvider::class,
                 \JanKlod\Database\Facades\DbManagerProvider::class,
+                \JanKlod\Validation\Facades\ValidationProvider::class,
             ],
             'alias' => [
                'Route' => 'JanKlod\\Routing\\Route'

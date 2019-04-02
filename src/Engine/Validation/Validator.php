@@ -32,11 +32,32 @@ class Validator  implements ValidationInterface
          * @param array $params 
          * @return void
         */
-  	    public function __construct(array $params)
+  	    public function __construct(array $params = [])
   	    {
                 $this->params = $params;
   	    }
         
+        
+        /**
+         * Set params
+         * @param array $params 
+         * @return void
+        */
+        public function setParams(array $params)
+        {
+             $this->params = $params;
+        }
+
+
+        /**
+         * Get params
+         * @return array
+        */
+        public function getParams()
+        {
+             return $this->params;
+        }
+
 
         /**
          * Verify if all fields in array

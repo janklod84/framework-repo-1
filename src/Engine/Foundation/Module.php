@@ -8,13 +8,17 @@ namespace JanKlod\Foundation\Modules;
 */
 abstract class Module 
 {
-	
+	   
+        /**
+         * @var string 
+        */
+	    const ROOT_PATH = 'default-root-path';	 
+
+
 	    /**
 		 * Module Name
 		 * @var string
         */		 
 	    protected $name = 'test';
-		
-		
 	
 }

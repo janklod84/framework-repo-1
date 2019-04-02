@@ -1,5 +1,5 @@
 <?php 
-namespace JanKlod\ORM\Behavioral\Command;
+namespace JanKlod\Behavioral\Command;
 
 
 /**
