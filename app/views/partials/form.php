@@ -1,23 +1,16 @@
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		 <form method="POST" autocomplete="off" id="form">
-		   <div class="form-group">
-		     <label for="login">Логин</label>
-		     <?= $form->input(
-		     	[
-		     	   'class' => 'form-control',
-		     	   'placeholder' => "Введите ваш логин",
-		     	   'id' => 'login'
-		     	], 
-		     	'email'); 
-		     ?>
-		    <!-- <input type="email" class="form-control" id="login" placeholder="Введите ваш логин"> -->
+<div class="d-flex justify-content-center">
+	<div class="col-m-6 col-md-offset-3">
+		<h1>Авторизация</h1>
+		 <?= $form->open() ?>
+		  <div class="form-group">
+		     <?= $form->input(['placeholder' => "Введите ваш логин",'id' => 'login'], 'email', 'Логин');?>
 		  </div>
 		  <div class="form-group">
-		    <label for="password">Пароль</label>
-		    <input type="password" class="form-control" id="password" placeholder="Введите ваш пароль">
+		    <?= 
+		     $form->input(['placeholder' => "Введите ваш пароль",'id' => 'password'], 'password', 'Пароль'); 
+		     ?>
 		  </div>
-		  <button type="submit" class="btn btn-primary">Отправить</button>
-       </form>
+		  <?= $form->button(['class' => 'btn btn-primary'], 'Отправить', 'submit'); ?>
+          <?= $form->close() ?>
 	</div>
 </div>

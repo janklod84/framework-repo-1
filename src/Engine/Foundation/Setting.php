@@ -49,7 +49,8 @@ class Setting
             ],
             'alias' => [
                'Route' => 'JanKlod\\Routing\\Route',
-               'Asset' => 'JanKlod\\Template\\Asset'
+               'Asset' => 'JanKlod\\Template\\Asset',
+               'HTML'  => 'JanKlod\\Template\\HTML'
             ]
         ];
 

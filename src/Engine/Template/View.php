@@ -161,7 +161,6 @@ class View implements ViewInterface
         */
         public function render($viewPath, $data = [])
         {      
-               // debug($data, true);
                $this->setData($data);
                $this->setViewPath($viewPath);
                $this->buffer();

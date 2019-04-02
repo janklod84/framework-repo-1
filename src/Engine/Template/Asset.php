@@ -46,7 +46,11 @@ class Asset
               self::$baseUrl = $baseUrl;
          }
 
-
+         
+         /**
+          * Get and Prepare base URL for render
+          * @return string
+          */
          private static function getbaseUrl()
          {
              return trim(self::$baseUrl, '/') . '/' ?? '';
@@ -108,10 +112,13 @@ class Asset
   	     {
                if(!empty(self::$container['js']))
                {
+                   $render = '';
                	   foreach(self::$container['js'] as $js)
                    {
-                       echo self::render(self::JS_MASK, $js);
+                       $render .= self::render(self::JS_MASK, $js);
                    }
+
+                   return $render;
                }
   	     }
 
@@ -124,10 +131,12 @@ class Asset
   	     {
                if(!empty(self::$container['css']))
                {
-               	  foreach(self::$container['css'] as $css)
-                  {
-                      echo self::render(self::CSS_MASK, $css);
-                  }
+                    $render = '';
+                 	  foreach(self::$container['css'] as $css)
+                    {
+                        $render .= self::render(self::CSS_MASK, $css);
+                    }
+                    return $render;
                }
   	     }
 
@@ -140,6 +149,6 @@ class Asset
          */
          private static function render($mask, $path)
          {
-             return sprintf($mask . PHP_EOL, self::getbaseUrl(). trim($path, '/'));
+              return sprintf($mask . PHP_EOL, self::getbaseUrl(). trim($path, '/'));
          }
 }

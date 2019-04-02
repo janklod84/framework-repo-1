@@ -3,6 +3,8 @@ namespace app\controllers;
 
 
 use app\library\BootstrapForm;
+use \HTML;
+
 
 /**
  * @package app\controllers\admin\LoginController
@@ -10,13 +12,17 @@ use app\library\BootstrapForm;
 class LoginController extends AppController
 {
         
-        
         /**
          * Index
          * @return void
         */
         public function index()
         {    
+             if($this->isPost())
+             {
+                 // die('POST');
+             }
+             
     	     $this->form();
         }
         
@@ -27,7 +33,7 @@ class LoginController extends AppController
         private function form()
         {
              $form = new BootstrapForm($_POST);
-             $title = 'Вход';
-    	     $this->render('partials/form', compact('title', 'form'));
+             HTML::setTitle('Вход');
+    	     $this->render('partials/form', compact('form'));
         }
 }

@@ -45,7 +45,6 @@ class ServiceManager implements ServiceInterface
         */
         public function __construct(ContainerInterface $app)
         { 
-                debug($this->app);
                $this->app = $app;
         }
   

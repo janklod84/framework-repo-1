@@ -8,7 +8,7 @@
 
 # http://project.loc/
 Route::get('/', "LoginController@index");
-
+Route::post('/', "LoginController@index");
 
 
 
