@@ -5,6 +5,8 @@ namespace JanKlod\Exception;
 
 /**
  * Error and exception handler
+ * This Handler very basic class, it will be perform later, do it more advanced
+ * 
  * @package \JanKlod\Exception\ErrorHandler
 */
 class ErrorHandler
@@ -64,8 +66,6 @@ class ErrorHandler
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
             error_log($message);
-            
-            // View::render("$code.html");
         }
     }
 }

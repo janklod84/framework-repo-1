@@ -120,8 +120,12 @@ class Response implements ResponseInterface
         */
         public function redirect($to = '/')
         {
-             header(sprintf('Location: %s', $to));
-             exit();
+            // verify if header sent or not
+            if(!headers_sent())
+            {
+               header(sprintf('Location: %s', $to));
+               exit();
+            }
         }
 
         /**
@@ -181,7 +185,10 @@ class Response implements ResponseInterface
             {
                 foreach($this->headers as $header)
                 {
-                    header($header);
+                      if(!headers_sent())
+                      {
+                           header($header);
+                      }   
                 }
             }
         }
@@ -227,9 +234,12 @@ class Response implements ResponseInterface
          */
         private function httpProtocol($status)
         {
-             $head =  sprintf('%s %s', (new ServerRequest())->protocol(), $status);
-             header($head, false);
-             $this->setCode($status);
+              $head =  sprintf('%s %s', (new ServerRequest())->protocol(), $status);
+              if(!headers_sent())
+              {   
+                  header($head);
+                  $this->setCode($status);
+              }
         }
 
         /*

@@ -50,19 +50,18 @@ class Router implements RouterInterface
          {
               if(!$this->matchedRoute())
               {
-                   $this->notFound();
+                   $this->errorCode(); 
               }
-
+              
               foreach($this->matchedRoute() as $routeObject)
               {
-                    if($routeObject->match($this->currentUrl()))
+                    if($routeObject->match($this->uri()))
                     {
                         return (string) $routeObject->call($this->app);
+                         
                     }
               }
-               
-              $this->notFound();
-              // $this->errorCode(); test
+              $this->errorCode(); 
          }
 
 
@@ -84,7 +83,7 @@ class Router implements RouterInterface
           */
          private function errorCode($code = 404)
          {
-             return $this->app->view->errorCode($code);
+              return $this->app->view->errorCode($code);
          }
 
 
@@ -100,12 +99,26 @@ class Router implements RouterInterface
 
          
          /**
-          * Determine current url 
+          * Get uri from URL
           * @return string
           */
-         private function currentUrl()
+         private function uri()
          {
               return $this->app->get('request')->uri();
+         }
+
+         
+         /**
+          * Get query string from URL
+          * true => signify rtim($queryString, '/')
+          * @return type
+        */
+         private function queryString()
+         {
+            $qstring = $this->app->request 
+                                 ->queryString(true);
+
+            return self::removeQueryString($qstring);
          }
          
          /**
@@ -117,8 +130,31 @@ class Router implements RouterInterface
          */
          private function matchedRoute()
          {
-              return $this->routes[$this->currentMethod()] ?? [];
+                return $this->routes[$this->currentMethod()];
          }
+
+
+        /**
+         * Remove Query String
+         * @param string $url [Request uri]
+         * @return string
+       */
+        protected static function removeQueryString($url) 
+        {
+            if($url)
+            {
+                $params = explode('&', $url, 2);
+
+                if(false === strpos($params[0], '='))
+                {
+                    return rtrim($params[0], '/');
+
+                }else{
+
+                    return '';
+                }
+            }
+        }
          
 
 }

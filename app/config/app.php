@@ -28,7 +28,7 @@ return [
     |   Application Name
     |------------------------------------------------------------------
    */
-    'name' => 'Janklod',
+    'name' => 'JanKlod', // Задачик
 
    /*
     |------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
    */
 
     'alias' => [
-       'Form' => 'app\\library\\BootstrapForm'
+       // 'Form' => 'app\\library\\BootstrapForm'
     ],
     
    /*
@@ -63,8 +63,8 @@ return [
     |------------------------------------------------------------------
    */
     'providers' => [
-         app\providers\FirstTestProvider::class,
-         app\providers\SecondTestProvider::class,
+         // app\providers\FirstTestProvider::class,
+         // app\providers\SecondTestProvider::class,
     ]
 
 ];

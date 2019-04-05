@@ -43,7 +43,7 @@ abstract class Controller
          * Data will be parse to view
          * @var array
         */
-        protected $data = [];
+        // protected $data = [];
 
 
 
@@ -67,23 +67,43 @@ abstract class Controller
          */
 	    protected function render($viewPath, $data = [])
 	    {     
+             $viewPath = trim($viewPath, '/');
              $layoutPath = sprintf('layouts/%s', $this->layout);
              $this->viewObject->setLayout($this->basePathView($layoutPath));
  	         $this->viewObject->render($this->basePathView($viewPath), $data);
 	    }
 
-
+        
+        /**
+         * Show errors
+         * @param int $code 
+         * @return mixed
+        */
+        public function errorCode($code = 404)
+        {
+             return $this->viewObject->errorCode();
+        }
 
         /**
-         * WILL BE IMPLEMENTED!
+         * LATER IT's WILL BE IMPLEMENTED CORRECTY!
          * 
          * Set variables for view
          * @param array $data
          * @return void
         */
-        protected function set($data)
+        // protected function set($data)
+        // {
+              // $this->data = $data;
+        // }
+
+        /**
+         * Redirect to page with header Location
+         * @param strin $to [path to redirect] Ex: [ $this->redirect('/users/')]
+         * @return type
+        */
+        protected function redirect($to = '')
         {
-              $this->data = $data;
+              return response()->redirect($to);
         }
 
         
@@ -126,6 +146,28 @@ abstract class Controller
         protected function json($data)
         {
             return json_encode($data);
+        }
+
+        
+        /**
+         * Find data from post request
+         * @param string $key 
+         * @return mixed
+        */
+        protected function post($key = null)
+        {
+            return $this->request->post($key);
+        }
+
+
+        /**
+         * Find data from get request
+         * @param string $key 
+         * @return mixed
+        */
+        protected function get($key = null)
+        {
+            return $this->request->get($key);
         }
 
         

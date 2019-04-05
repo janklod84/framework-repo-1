@@ -9,6 +9,12 @@ namespace JanKlod\Routing;
 class Dispatcher 
 {
 	    
+          
+          /**
+           * @const string
+          */
+          const ACTION_PREFIX = 'Action';
+
 
   	      /**
   	       * @var \Closure
@@ -26,7 +32,7 @@ class Dispatcher
           /**
            * @var current controller
           */
-	       private $controller = '\\%s\\controllers\\%s';
+	        private $controller = '\\%s\\controllers\\%s';
 
         
           /**
@@ -42,7 +48,6 @@ class Dispatcher
 
 
 
-
         
          /**
           * Constructor
@@ -51,21 +56,21 @@ class Dispatcher
           * @param ContainerInterface $app
           * @return mixed
          */
-	      public function __construct($callback, $matches, $app)
-	      {
-          
-                $this->callback = $callback;
-                $this->matches  = $matches;
-                $this->app = $app;
+  	      public function __construct($callback, $matches, $app)
+  	      {
+            
+                  $this->callback = $callback;
+                  $this->matches  = $matches;
+                  $this->app = $app;
 
-                if(is_string($this->callback))
-                {
-                	  list($controller, $action) = explode("@", $this->callback, 2);
-                	  $this->controller = $this->getController($controller);
-                	  $this->action = $this->getAction($action);
-                	  $this->callback = [$this->controller, $this->action];
-                }
-	      }
+                  if(is_string($this->callback))
+                  {
+                  	  list($controller, $action) = explode("@", $this->callback, 2);
+                  	  $this->controller = $this->getController($controller);
+                  	  $this->action = $this->getAction($action);
+                  	  $this->callback = [$this->controller, $this->action];
+                  }
+  	      }
 
        
        /**

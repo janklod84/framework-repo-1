@@ -16,14 +16,15 @@ class FormRepository
        * @const array
       */
       const TYPE_FIELDS = [
-          'form'     => '<form %s>', // <form %s>%s</form>
+          'open'     => '<form %s>', 
+          'full'     => '<form %s>%s</form>',
         	'label'    => '<label for="%s">%s</label>',
           'input'    => '<input type="%s"%s>',
           'select'   => '<select name="%s">%s</select>',
           'textarea' => '<textarea %s>%s</textarea>',
           'option'   => '<option value="%s">%s</option>',
           'button'   => '<button type="%s"%s>%s</button>',
-          'surround' => '<%>%s</%s>'
+          // 'surround' => '<%>%s</%s>'
       ];
 
 
@@ -50,7 +51,24 @@ class FormRepository
          * @param array $attributes 
          * @return string
       */
-      public static function controlButton($attributes, $label, $type='button')
+      public static function controlTextarea($attributes, $label, $value)
+      {
+           $html = self::checkLabel($label, $attributes);
+           $html .= sprintf(self::TYPE_FIELDS['textarea'] . PHP_EOL, 
+                          self::getAttributes($attributes),   
+                          $value
+                     );
+           return $html;
+      }
+
+
+      /**
+         * Get input field
+         * @param string $type 
+         * @param array $attributes 
+         * @return string
+      */
+      public static function controlButton($attributes, $label, $type)
       {
            return sprintf(self::TYPE_FIELDS['button'] . PHP_EOL,
                           $type,
@@ -67,7 +85,7 @@ class FormRepository
        */
       public static function controlForm($attributes = [])
       {
-           return sprintf(self::TYPE_FIELDS['form'] . PHP_EOL,  self::getAttributes($attributes));
+           return sprintf(self::TYPE_FIELDS['open'] . PHP_EOL,  self::getAttributes($attributes));
       }
 
 
@@ -86,6 +104,7 @@ class FormRepository
 
        
        /**
+        * Remove this method to Trait
         * Get input attributes
         * @return string
        */
@@ -94,12 +113,11 @@ class FormRepository
   	   	      $output = '';
               if(!empty($attributes))
               {
-              	foreach($attributes as $name => $value)
-                  {
-                  	 // if(is_array($value)) { $value = implode(';', array_values($value)); }
-                       $output .= sprintf(' %s="%s"', $name, $value);
-                  }
-                  return $output;
+              	   foreach($attributes as $name => $value)
+                   {
+                        $output .= sprintf(' %s="%s"', $name, $value);
+                   }
+                   return $output;
               }
   	   }
 

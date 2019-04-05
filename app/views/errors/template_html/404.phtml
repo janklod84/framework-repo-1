@@ -10,24 +10,23 @@
     <title>Default Layout</title>
 
     <!-- bootstrap core css -->
-    <link href="/admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/errors/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- styles -->
     <link rel="stylesheet" href="/admin/app.css">
 
 </head>
 <body>
-
    <div class="container">
-   	    <div style="margin-top: 30px;">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<h1 style="font-size: 5em;">Oops! Not found page</h1>
-					<a href="/">Go to home page</a>
-				</div>
-			    <code><?= __FILE__ ?></code>
-             </div>
-        </div>
+   	   <div style="margin-top: 30px;">
+            <div class="row">
+              <div class="col-md-12">
+                <h1 style="font-size: 3em;">404 Страница не найдена!</h1>
+                <small>Опаа! что то пошло не так ((</small>
+                  <?php view_path(__FILE__); ?>
+              </div>
+              </div>
+      </div>
    </div>
 
    <!-- scripts -->

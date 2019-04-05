@@ -161,6 +161,7 @@ class View implements ViewInterface
         */
         public function render($viewPath, $data = [])
         {      
+               $viewPath = trim($viewPath, '/');
                $this->setData($data);
                $this->setViewPath($viewPath);
                $this->buffer();
@@ -176,8 +177,10 @@ class View implements ViewInterface
         {
                ob_start();
                extract($this->data);
+               $this->checkIfFileExist($this->viewPath);
                require_once($this->viewPath);
                $content = ob_get_clean();
+               $this->checkIfFileExist($this->layout);
                require_once($this->layout);
         }
 
@@ -195,6 +198,15 @@ class View implements ViewInterface
               $path = sprintf($this->errorPath, $code);
               $this->app->file->call($path);
               exit;
+         }
+
+
+         private function checkIfFileExist($file)
+         {
+               if(!file_exists($file))
+               {
+                   exit(sprintf('File <strong>%s</strong> does not exist', $file));
+               }
          }
          
 }

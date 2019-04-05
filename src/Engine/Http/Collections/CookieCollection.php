@@ -15,6 +15,7 @@ class CookieCollection extends GlobalCollection
 	   public function fromGlobals()
 	   {
 	   	   return $this->collection->asObject($_COOKIES);
+	   	   // return $_COOKIES ?? [];
 	   }
 
 }

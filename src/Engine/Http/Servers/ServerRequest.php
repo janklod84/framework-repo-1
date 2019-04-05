@@ -82,6 +82,22 @@ class ServerRequest implements ServerRequestInterface
         }
 
 
+
+        public function queryString($trim = false)
+        {
+            $qs = $this->fromGlobals('QUERY_STRING');
+
+            if($trim === true) 
+            { 
+                return rtrim($qs, '/');
+
+            }else{ 
+
+                return $qs;
+            }
+        }
+
+
         /**
          * Get Request Method
          * @return string
@@ -132,6 +148,15 @@ class ServerRequest implements ServerRequestInterface
         */
         public function fromGlobals($key = null)
         {
+            /*
+            if(is_null($key))
+            {
+                return $_SERVER;
+            }
+
+            return $this->has($key) ? $_SERVER[$key] : [];
+            */
+  
             if(is_null($key))
             {
                 return $this->collection->all();
@@ -147,6 +172,7 @@ class ServerRequest implements ServerRequestInterface
         */
         public function has($key): bool
         {
+             // return isset($_SERVER[$key]);
              return $this->collection->has($key);
         }
 

@@ -41,16 +41,24 @@ class Setting
                 \JanKlod\Http\Facades\ResponseProvider::class,
                 \JanKlod\Routing\Facades\RouterProvider::class,
                 \JanKlod\Template\Facades\ViewProvider::class,
-                \JanKlod\Database\Facades\DbConfigProvider::class,
-                \JanKlod\Database\Facades\DbConnectionProvider::class,
-                \JanKlod\Database\Facades\DbManagerProvider::class,
-                \JanKlod\Validation\Facades\ValidationProvider::class,
+                // \JanKlod\Database\Facades\DbConfigProvider::class,
+                // \JanKlod\Database\Facades\DbConnectionProvider::class,
+                // \JanKlod\Database\Facades\DbManagerProvider::class,
+                // \JanKlod\Validation\Facades\ValidationProvider::class,
+                // \JanKlod\Database\Facades\ActiveRecordProvider::class,
                 // \JanKlod\Template\Facades\AssetProvider::class,
             ],
             'alias' => [
-               'Route' => 'JanKlod\\Routing\\Route',
-               'Asset' => 'JanKlod\\Template\\Asset',
-               'HTML'  => 'JanKlod\\Template\\HTML'
+               'Route'   => 'JanKlod\\Routing\\Route',
+               'Asset'   => 'JanKlod\\Template\\Asset',
+               'HTML'    => 'JanKlod\\Template\\HTML', 
+               'Session' => 'JanKlod\\Common\\Sessions\\Session',
+               'Token'   => 'JanKlod\\Encryption\\Token',
+               'Auth'    => 'JanKlod\\Authentication\\Auth',
+               'Config'  => 'JanKlod\\Configuration\\Config',
+               'Url'     => 'JanKlod\\Common\\Url',
+               'Flash'   => 'JanKlod\\Common\\Flash',
+               'Router'  => 'JanKlod\\Routing\\Router'
             ]
         ];
 

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<?= HTML::lang('ru') ?>
 <head>
-	<title>Admin Layout</title>
-	<style type="text/css">
-	    *{box-sizing: border-box;}
-		body{font-family: Helvetica; font-weight: 400; color: #333;}
-	</style>
+    <?= HTML::metas() ?>
+    <link rel="icon" href="favicon.ico">
+    <title><?= HTML::title() ?></title>
+    <?= Asset::renderCss() ?>
 </head>
-<body>
-   <h1>Admin Layout</h1>
+<body style="background: #eee;">
+   <div class="container" style="margin-top: 30px;">
+   	    <?= $content; ?>
+   </div>
 
-   <?= $content; ?>
-   
    <!-- scripts -->
-   <script src="/admin/jquery/jquery-3.3.1.min.js"></script>
-   <script src="/admin/app.js"></script>
+   <?= Asset::renderJs() ?>
 </body>
 </html>

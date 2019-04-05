@@ -50,9 +50,14 @@ class HTML
          * Get title
          * @return string
         */
-        public static function title()
+        public static function title($full = false)
         {
-        	  return sprintf('<title>%s</title>', self::$title ?? '') . PHP_EOL;
+              $title = self::$title ?? '';
+        	  if($full === true)
+              {
+                  $title = sprintf('<title>%s</title>', $title) . PHP_EOL;
+              }
+              return $title;
         }
 
         

@@ -35,7 +35,7 @@ class RouteObject implements RouteObjectInterface
          * method request
          * @var string 
         */ 
-        private $requestMethod = 'GET';
+        private $requestMethod;
         
 
         
@@ -222,8 +222,8 @@ class RouteObject implements RouteObjectInterface
                  $regex = sprintf("#^%s$#i", $path);
                  
                  if(!RouteManager::isMatched($regex, $url))
-                 {
-                      return false;
+                 {   
+                       return false;
                  }
 
                  $matches = RouteManager::getMatches($regex, $url);
@@ -239,10 +239,17 @@ class RouteObject implements RouteObjectInterface
              */
              public function call($app)
              {
-                  return (new Dispatcher($this->callback, $this->matches, $app))->call();
+                  return $this->getDispatcher($app)->call();
              }
 
-
+            
+             /**
+               * Get Dispatcher 
+             */
+             public function getDispatcher($app)
+             {
+                 return new Dispatcher($this->callback, $this->matches, $app);
+             }
         
             /**
               * set param / add regex for url
@@ -250,6 +257,7 @@ class RouteObject implements RouteObjectInterface
               * Route::get('/', 'HomeController@index', 'welcome.page')
               *        ->with(':id', '[0-9]+')
               *        ->with(':slug', '[a-z\-0-9]+');
+              * 
               * 
               * @param type $param 
               * @param type $regex 
@@ -265,6 +273,11 @@ class RouteObject implements RouteObjectInterface
 
              /**
               * Generate named route
+              * It's work when you have params matched 
+              * For exemple :
+              * If /admin/user/edit/:id Named user.show
+              * We'll obtain url('user.show', ['id' => $user->id]) 
+              * It's show /admin/user/edit/1[correspondant data to show]
               * @param string $name 
               * @param array $params 
               * @return string
@@ -273,7 +286,7 @@ class RouteObject implements RouteObjectInterface
              {
                   if(!self::hasNamedRoute($name))
                   {
-                      return Url::to($name, $params);
+                       return Url::to($name, $params);
                   }
 
                   return self::findNamedRoute($name)->getUrl($params);
@@ -308,6 +321,20 @@ class RouteObject implements RouteObjectInterface
                       $path = str_replace(":$k", $v, $path);
                   } 
                   return $path;
+             }
+
+             
+             /**
+              * Get error view
+              * It's will remove [ I put here momentaly to fix one point ]
+              * @param string|int $code 
+              * @return void
+             */
+             private function errorCode($code = 404)
+             {
+                   response()->setCode($code);
+                   require_once ROOT . "/app/views/errors/$code.php";
+                   exit;
              }
 
 

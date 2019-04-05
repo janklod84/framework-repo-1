@@ -11,6 +11,9 @@ use JanKlod\Http\Collections\GlobalFactory;
 
 
 /**
+ * This class will be fixed!
+ * This code it's for moment
+ * 
  * @package JanKlod\Http\Requests\Request
 */ 
 class Request implements RequestInterface
@@ -85,6 +88,7 @@ class Request implements RequestInterface
          */
          public function get($key = null)
          {
+             // return is_null($key) ? $_GET : $_GET[$key] ?? null;
               $collection = $this->global->retrieve('get');
               return $this->find($collection, $key);
          }
@@ -96,6 +100,8 @@ class Request implements RequestInterface
          */
          public function post($key = null)
          {
+             
+             // return is_null($key) ? $_POST : $_POST[$key] ?? null;
              $collection = $this->global->retrieve('post');
              return $this->find($collection, $key);
          }
@@ -108,6 +114,7 @@ class Request implements RequestInterface
          */
          public function request($key = null)
          {
+             // return is_null($key) ? $_REQUEST : $_REQUEST[$key] ?? null;
              $collection = $this->global->retrieve('request');
              return $this->find($collection, $key);
          }
@@ -120,6 +127,7 @@ class Request implements RequestInterface
          */
          public function files($key = null)
          {
+             // return is_null($key) ? $_FILES : $_FILES[$key] ?? null;
              $collection = $this->global->retrieve('file');
              return $this->find($collection, $key);
          }
@@ -146,6 +154,13 @@ class Request implements RequestInterface
 
 
 
+         public function queryString($trim = false)
+         {
+             return $this->server->queryString($trim);
+         }
+
+
+
          /**
           * Get item from superglobal array $_COOKIES
           * @param string $key
@@ -153,6 +168,7 @@ class Request implements RequestInterface
          */
          public function cookie($key = null)
          {
+             // return is_null($key) ? $_COOKIE : $_COOKIE[$key] ?? null;
              $collection = $this->global->retrieve('cookie');
              return $this->find($collection, $key);
          }
@@ -165,6 +181,8 @@ class Request implements RequestInterface
          */
          public function server($key = null)
          {
+
+             // return is_null($key) ? $_SERVER : $_SERVER[$key] ?? [];
              $collection = $this->global->retrieve('server');
              return $this->find($collection, $key);
          }
@@ -209,8 +227,9 @@ class Request implements RequestInterface
           * @param string $key 
           * @return mixed
          */
-         private function find($collection, string $key = null)
+         private function find($collection, $key)
          {
+              // debug($collection->all(), true);
          	    return is_null($key) ? $collection->all() : $collection->get($key);
          }
 

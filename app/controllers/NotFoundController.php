@@ -3,6 +3,8 @@ namespace app\controllers;
 
 use JanKlod\Http\Controller;
 use JanKlod\Template\Asset;
+use \HTML;
+
 
 
 /**
@@ -11,13 +13,20 @@ use JanKlod\Template\Asset;
 class NotFoundController extends Controller
 {
         
+		/**
+		 * @string 
+		*/
         public $layout = 'default';
-
+        
+		
+		/**
+		 * Render page 404
+		 * @return mixed 
+		*/
 	    public function index()
 	    {
 	    	 Asset::setParams($this->app->configs['asset'], $this->app->base_url);
-	    	 $title = 'Страница не найдена!';
-	    	 // $this->render('not-found', compact('title'));
-	    	 $this->render('errors/404', compact('title'));
+	    	 HTML::setTitle('Страница не найдена');
+	    	 $this->render('errors/404');
 	    }
 }

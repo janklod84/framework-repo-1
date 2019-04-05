@@ -8,8 +8,8 @@ return [
     |------------------------------------------------------------------
    */
     'css' => [
-       '/task/bootstrap/css/bootstrap.min.css',
-       '/task/app.css'
+       '/task/css/bootstrap.min.css',
+       '/task/css/app.css'
     ],
 
    /*
@@ -18,8 +18,9 @@ return [
     |------------------------------------------------------------------
    */
     'js' => [
-       '/task/jquery/jquery-3.3.1.min.js',
-       '/task/app.js'
+       '/task/js/jquery-3.3.1.min.js',
+       '/task/js/bootstrap.min.js',
+       '/task/js/app.js'
     ],
 
     /*

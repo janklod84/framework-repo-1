@@ -45,5 +45,28 @@ class Hash
 	  	 {
 	           return self::make(uniqid());
 	  	 }
+
+         
+         /**
+          * Hash password
+          * @param string $flag 
+          * @return string
+         */
+	  	 public function password($flag = PASSWORD_DEFAULT)
+	  	 {
+	  	 	   return password_hash($password, $flag);
+	  	 }
+
+         
+         /**
+          * Verfiy if password matched
+          * @param string $current [ given password want to compare ]
+          * @param string $handler [ handler hashed ]
+          * @return bool
+          */
+	  	 public function verifyPassword($current, $handler): bool
+	  	 {
+	  	 	 return password_verify($current, $handler);
+	  	 }
      
 }

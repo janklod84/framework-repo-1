@@ -14,7 +14,7 @@ class PostCollection extends GlobalCollection
        */
 	   public function fromGlobals()
 	   {
-	   	   return $this->collection->asObject($_POST);
+	   	    return $this->collection->asObject($_POST);
 	   }
 
 }

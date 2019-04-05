@@ -4,6 +4,8 @@ namespace JanKlod\Foundation;
 
 use JanKlod\Container\ContainerInterface;
 use JanKlod\Services\ServiceManager;
+use JanKlod\Common\Sessions\Session;
+
 
 
 class Bootstrap 
@@ -24,6 +26,11 @@ class Bootstrap
   	     {
                  
                  $this->app = $app;
+
+
+                 # Start session
+                 Session::start();
+
                  
                  # Functions requiring
                  require_once __DIR__.'/Function.php';

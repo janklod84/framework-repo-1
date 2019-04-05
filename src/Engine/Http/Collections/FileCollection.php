@@ -14,7 +14,8 @@ class FileCollection extends GlobalCollection
        */
 	   public function fromGlobals()
 	   {
-	   	   return $this->collection->asObject($_FILES);
+	   	    return $this->collection->asObject($_FILES);
+	   	    // return $_FILES ?? [];
 	   }
 
 }

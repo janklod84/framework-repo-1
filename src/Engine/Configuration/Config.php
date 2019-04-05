@@ -106,10 +106,17 @@ class Config implements ConfigInterface
 
          /**
           * Load config from file
+          * will be Fixed for adaptation with other path
+          * 
           * @param type|string $group 
           * @return type
          */
-         public static function file($group = 'app') {}
+         public static function file($group = 'app') 
+         {
+              $file = sprintf(ROOT . '/'. DEFAULT_CONFIG_PATH, $group);
+              if(file_exists($file)) { return require_once($file); }
+              else{ return false; }
+         }
 
 
          /**

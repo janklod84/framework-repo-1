@@ -28,6 +28,15 @@ final class Application
           private $app;
 
 
+          
+          /**
+           * Modules container
+           * @var array
+          */
+          private $modules = [];
+
+
+
           /**
            * Contructor
            * @param string $root
@@ -47,26 +56,17 @@ final class Application
                new Bootstrap($this->app);
           }
 
-
-          
-          public function test()
-          {
-               /// 
-          }
-
-
           /**
            * Break Point of Application
            * @return mixed
           */
           public function run()
-          {
-              $this->test();
-
+          {   
               $output = (string) $this->get('router')->dispatch();
               $response = $this->get('response');
               $response->setBody($output);
               $response->send();
+
           } 
 
 
@@ -120,6 +120,17 @@ final class Application
          public function get($key)
          {
               return $this->app->get($key);
+         }
+
+
+         /**
+          * Add Module in module container
+          * @param string $module 
+          * @return void
+         */
+         public function addModule($module)
+         {
+               $this->modules[] = $module;
          }
 		 
  

@@ -4,7 +4,6 @@ namespace JanKlod\Library;
 
 use JanKlod\Library\Repository\FormRepository;
 
-
 /**
  * @package JanKlod\Library\Form 
 */
@@ -31,7 +30,7 @@ class Form
          * Surround inputs fields with html tag
          * @var string
         */
-        protected $surround = 'div';
+        protected $surround = ''; // div
 
 
         
@@ -64,6 +63,17 @@ class Form
         public function get()
         {
             return $this->data;
+        }
+
+        
+        /**
+         * get value from data
+         * @param type $name 
+         * @return type
+        */
+        public function value($name)
+        {
+            return $this->data[$name] ?? '';
         }
 
         
@@ -105,7 +115,17 @@ class Form
         */
         public function surround($data, $attributes = [])
         {
-             return sprintf(FormRepository::TYPE_FIELDS['surround'], $this->surround, $data, $this->surround);
+             if($this->surround)
+             {
+                 $attr = FormRepository::getAttributes($attributes);
+                 $html = sprintf("<{$this->surround} %s>", $attr). PHP_EOL;
+                 $html .= $data;
+                 $html .= "</{$this->surround}>". PHP_EOL;
+
+             }else{
+
+                 return $data;
+             }
         }
 
         
@@ -115,6 +135,7 @@ class Form
          *    'placeholder' => "Enter your login",
          *    'id' => 'password'
          * ], 'password', 'Login'); 
+         * Fixe with method surround  $this->surround($data)
          * 
          * @param string $type 
          * @param array $attributes 
@@ -125,6 +146,16 @@ class Form
              return FormRepository::controlInput($type, $attributes, $label);
         }
 
+        
+        /**
+         * Generate field type hidden
+         * @param array $attributes 
+         * @return string
+        */
+        public function hidden($attributes = [])
+        {
+             return FormRepository::controlInput('hidden', $attributes, false);
+        }
 
 
         /**
@@ -154,11 +185,9 @@ class Form
          * @param array $attributes 
          * @return string
         */
-        public function textarea($attributes = [], $label = '')
+        public function textarea($attributes = [], $label = '', $value = '')
         {
-             return sprintf(FormRepository::TYPE_FIELDS['textarea'], 
-                          FormRepository::controlInput($attributes, $label)
-                   );
+             return FormRepository::controlTextarea($attributes, $label, $value);
         }
        
         
@@ -172,6 +201,20 @@ class Form
         public function button($attributes = [], $label = '', $type = 'button')
         {
              return FormRepository::controlButton($attributes, $label, $type);
+        }
+
+
+         /**
+         * Generate field type checkbox
+         * To Refactoring this method
+         * @param array $attributes 
+         * @param string $label 
+         * @return status
+        */
+        public function checkBox($attributes = [], $label = '', $checked = 0)
+        {
+               ($checked == 1) ? $attributes['checked'] = 'checked' : '';
+               return FormRepository::controlInput('checkbox', $attributes, $label);
         }
 
 }

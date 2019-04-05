@@ -31,8 +31,9 @@ class Collection implements CollectionInterface
          * @param array|array $items 
          * @return type
         */
-        public function asObject(array $items = [])
+        public function asObject(array $items)
         {
+            $this->items = $items;
             return new self($items);
         }
 
@@ -121,6 +122,21 @@ class Collection implements CollectionInterface
         public function push($items)
         {
              array_push($this->items, $items);
+        }
+
+
+        /**
+         * Remove item by key
+         * 
+         * @param string $key 
+         * @return void
+         */
+        public function remove($key)
+        {
+             if($this->has($key))
+             {
+                  unset($this->items[$key]);
+             }
         }
 
 }

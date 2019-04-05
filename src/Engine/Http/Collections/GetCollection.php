@@ -14,7 +14,8 @@ class GetCollection extends GlobalCollection
        */
 	   public function fromGlobals()
 	   {
-	   	   return $this->collection->asObject($_GET);
+	   	    return $this->collection->asObject($_GET);
+	   	    //return $_GET ?? [];
 	   }
 
 }
