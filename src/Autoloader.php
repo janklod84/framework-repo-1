@@ -42,7 +42,7 @@ class Autoloader
         */
         private function __construct($params)
         {
-             if(empty($params))
+             if(!empty($params))
              { 
                  if(empty($params['json']))
                  {
