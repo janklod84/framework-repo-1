@@ -26,6 +26,7 @@ class TaskController extends FrontController
                 # Подготовка качества параметры для Рагинации
                 $total = $this->task->all()->count();
                 $page  = !empty($args[0]) ? (int) $args[0] : 1;
+                
                 $perpage = 3;
                 
                 # инициализуем нашу пагинацию
